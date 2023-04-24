@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student update</title>
+</head>
+<body>
+<form th:action="@{/student-update}" th:object="${detailInformation}" method="post">
+    <label for="id_owner">ID</label>
+    <input readonly type="number" th:field="*{people.id}" id="id_owner" placeholder="ID">
+    <div>
+        <label for="status">Контракт\бюджет</label>
+        <input type="text" th:field="*{status}" id="status" placeholder="к\б">
+    </div>
+    <div>
+        <label for="form1">Обозравательная степень</label>
+        <input type="text" th:field="*{form1}" id="form1" placeholder="степень">
+    </div>
+    <div>
+        <label for="form2">Форма обучения</label>
+        <input type="text" th:field="*{form2}" id="form2" placeholder="форма обучения">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    </div>
+    <div>
+        <label for="bal">Средний балл</label>
+        <input type="text" th:field="*{bal}" id="bal" placeholder="Средний бал">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+<li><a th:href="@{/students}">Back</a></li>
+</body>
+</html>
+
+

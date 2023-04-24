@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/people/save}" th:object="${people}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" th:field="*{name}" />
+
+  <label for="surname">Surname:</label>
+  <input type="text" id="surname" name="surname" th:field="*{surname}" />
+
+  <label for="surname2">Patronymic:</label>
+  <input type="text" id="surname2" name="surname2" th:field="*{surname2}" />
+
+  <label for="group">Group:</label>
+  <select id="group" name="group.id">
+    <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}" />
+  </select>
+
+  <button type="submit">Save</button>
+</form>
+<li><a th:href="@{/groups}">Back</a></li>
+</body>
+</html>

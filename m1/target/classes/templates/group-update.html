@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Group</title>
+</head>
+<body>
+<form action="#" th:action="@{/group-update}" th:object="${group}" method="post">
+
+  <label for="id">ID</label>
+  <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+  <br/>
+  <label for="Name">Group name</label>
+  <input type="text" th:field="*{Name}" id="Name" placeholder="Name">
+  <input type="submit" value="Change group`s name">
+        <div th:switch="${people}">
+            <h2 th:case="null">No students found!</h2>
+            <div th:case="*">
+                <h2>Students</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>SurName</th>
+                        <th>Patronymic</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="people : ${people}">
+                        <td th:text="${people.id}"></td>
+                        <td th:text="${people.name}"></td>
+                        <td th:text="${people.surname}"></td>
+                        <td th:text="${people.surname2}"></td>
+                        <td><a th:href="@{people-delete/{id}(id=${people.id})}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <li><a th:href="@{/people/new}">Добавить студента</a></li>
+        </div>
+
+</form>
+<li><a th:href="@{/groups}">Back</a></li>
+</body>
+</html>
